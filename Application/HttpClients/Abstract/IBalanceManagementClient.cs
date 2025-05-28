@@ -5,7 +5,7 @@ namespace Application.HttpClients.Abstract
 {
     public interface IBalanceManagementClient
     {
-        Task<GetProductsClientResponse> GetProductsAsync();
+        Task<GetProductsClientResponseDto> GetProductsAsync();
 
         Task<OrderResponseDto> PreOrderAsync(PreOrderRequestDto request);
 

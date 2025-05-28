@@ -1,4 +1,5 @@
-﻿using Application.Dtos.OrderDtos;
+﻿using Application.Dtos;
+using Application.Dtos.OrderDtos;
 using Application.Dtos.ProductDtos;
 using Application.HttpClients.Abstract;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Application.HttpClients.Implementation
 {
     public class BalanceManagementClient(HttpClient httpClient) : IBalanceManagementClient
     {
-        public async Task<GetProductsClientResponse> GetProductsAsync()
+        public async Task<GetProductsClientResponseDto> GetProductsAsync()
         {
             string contentString = string.Empty;
             try
@@ -19,7 +20,7 @@ namespace Application.HttpClients.Implementation
                 
                 httpRequest.EnsureSuccessStatusCode();
 
-                var content = JsonSerializer.Deserialize<GetProductsClientResponse>(contentString);
+                var content = JsonSerializer.Deserialize<GetProductsClientResponseDto>(contentString);
 
                 if (content is null)
                     throw new Exception("Content deserialization problem!");
@@ -30,7 +31,7 @@ namespace Application.HttpClients.Implementation
             catch(Exception ex) 
             {
 
-                var errorContent = JsonSerializer.Deserialize<GetProductsClientErrorResponse>(contentString);
+                var errorContent = JsonSerializer.Deserialize<BalanceManagementClientErrorResponseDto>(contentString);
                 throw new Exception($"{errorContent?.error}\n{errorContent?.message}");
             }
         }
@@ -58,7 +59,7 @@ namespace Application.HttpClients.Implementation
             }
             catch (Exception ex)
             {
-                var errorContent = JsonSerializer.Deserialize<GetProductsClientErrorResponse>(contentString);
+                var errorContent = JsonSerializer.Deserialize<BalanceManagementClientErrorResponseDto>(contentString);
                 throw new Exception($"{errorContent?.error}\n{errorContent?.message}");
             }
         }
@@ -86,7 +87,7 @@ namespace Application.HttpClients.Implementation
             }
             catch (Exception ex)
             {
-                var errorContent = JsonSerializer.Deserialize<GetProductsClientErrorResponse>(contentString);
+                var errorContent = JsonSerializer.Deserialize<BalanceManagementClientErrorResponseDto>(contentString);
                 throw new Exception($"{errorContent?.error}\n{errorContent?.message}");
             }
         }
