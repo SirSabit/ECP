@@ -1,3 +1,4 @@
+using Api.Endpoints.OrderEndpoints;
 using Api.Endpoints.ProductEndpoints;
 using Api.Middlewares.ExceptionHandlers;
 using Application.Extensions;
@@ -37,6 +38,7 @@ var apiVersionSet = app.NewApiVersionSet()
     .Build();
 
 app.MapProductV1Endpoints(apiVersionSet);
+app.MapOrderV1Endpoints(apiVersionSet);
 
 app.UseExceptionHandler();
 app.UseHttpsRedirection();

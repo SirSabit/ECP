@@ -38,6 +38,7 @@ namespace Application.Extensions
                 }));
 
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
         }
     }
 }
