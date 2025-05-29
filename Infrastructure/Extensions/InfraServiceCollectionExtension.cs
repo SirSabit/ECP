@@ -15,6 +15,7 @@ namespace Infrastructure.Extensions
             services.AddDbContext<PostgresDbContext>();
             services.AddScoped<IDbContext<PostgresDbContext>, DbContextWrapper<PostgresDbContext>>();
 
+            //Define the main properties and policies of Balance Client
             services.AddHttpClient<IBalanceManagementClient, BalanceManagementClient>(client =>
             {
                 var baseUrl = configuration["HttpClients:BalanceManagement:Url"];
