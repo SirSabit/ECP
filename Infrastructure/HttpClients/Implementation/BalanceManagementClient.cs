@@ -1,11 +1,11 @@
-﻿using Application.Dtos;
-using Application.Dtos.OrderDtos;
-using Application.Dtos.ProductDtos;
-using Application.HttpClients.Abstract;
+﻿using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.OrderDtos;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.ProductDtos;
+using Infrastructure.HttpClients.Abstract;
 using System.Text;
 using System.Text.Json;
 
-namespace Application.HttpClients.Implementation
+namespace Infrastructure.HttpClients.Implementation
 {
     public class BalanceManagementClient(HttpClient httpClient) : IBalanceManagementClient
     {
@@ -17,7 +17,7 @@ namespace Application.HttpClients.Implementation
                 var httpRequest = await httpClient.GetAsync("/api/products");
 
                 contentString = await httpRequest.Content.ReadAsStringAsync();
-                
+
                 httpRequest.EnsureSuccessStatusCode();
 
                 var content = JsonSerializer.Deserialize<GetProductsClientResponseDto>(contentString);
@@ -28,7 +28,7 @@ namespace Application.HttpClients.Implementation
                 return content;
 
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
 
                 var errorContent = JsonSerializer.Deserialize<BalanceManagementClientErrorResponseDto>(contentString);

@@ -1,6 +1,6 @@
-﻿using Application.Dtos.OrderDtos;
-using Application.Services.Abstract;
+﻿using Application.Services.Abstract;
 using Asp.Versioning.Builder;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.OrderDtos;
 
 namespace Api.Endpoints.OrderEndpoints
 {

@@ -1,4 +1,5 @@
-﻿using Application.Dtos.OrderDtos;
+﻿
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.OrderDtos;
 
 namespace Application.Services.Abstract
 {

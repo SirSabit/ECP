@@ -1,6 +1,6 @@
-﻿using Application.Dtos.ProductDtos;
-using Application.HttpClients.Abstract;
-using Application.Services.Abstract;
+﻿using Application.Services.Abstract;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.ProductDtos;
+using Infrastructure.HttpClients.Abstract;
 
 namespace Application.Services.Implementation
 {
