@@ -1,7 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Application.Dtos
+﻿namespace Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos
 {
     public record BalanceManagementClientErrorResponseDto(string error, string message);
-   
 }

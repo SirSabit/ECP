@@ -1,7 +1,7 @@
-﻿using Application.Dtos.OrderDtos;
-using Application.Dtos.ProductDtos;
+﻿using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.OrderDtos;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.ProductDtos;
 
-namespace Application.HttpClients.Abstract
+namespace Infrastructure.HttpClients.Abstract
 {
     public interface IBalanceManagementClient
     {

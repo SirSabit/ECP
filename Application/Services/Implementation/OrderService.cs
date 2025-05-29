@@ -1,7 +1,7 @@
-﻿using Application.Dtos.OrderDtos;
-using Application.HttpClients.Abstract;
-using Application.Services.Abstract;
+﻿using Application.Services.Abstract;
 using Domain.Exceptions;
+using Dtos.InfrastructureDtos.HttpClientDtos.BalanceManagementClientDtos.OrderDtos;
+using Infrastructure.HttpClients.Abstract;
 
 namespace Application.Services.Implementation
 {
