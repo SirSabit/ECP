@@ -1,4 +1,6 @@
-﻿using Infrastructure.HttpClients.Abstract;
+﻿using Infrastructure.DbContexts.Abstract;
+using Infrastructure.DbContexts.Implementation;
+using Infrastructure.HttpClients.Abstract;
 using Infrastructure.HttpClients.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +12,9 @@ namespace Infrastructure.Extensions
     {
         public static void AddInfrastructureLayerServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddDbContext<PostgresDbContext>();
+            services.AddScoped<IDbContext<PostgresDbContext>, DbContextWrapper<PostgresDbContext>>();
+
             services.AddHttpClient<IBalanceManagementClient, BalanceManagementClient>(client =>
             {
                 var baseUrl = configuration["HttpClients:BalanceManagement:Url"];
@@ -28,7 +33,7 @@ namespace Infrastructure.Extensions
                 .AddPolicyHandler(Policy<HttpResponseMessage>
                 .Handle<HttpRequestException>()
                 .OrResult(response => !response.IsSuccessStatusCode)
-                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
                 onRetry: (outcome, timespan, retryCount, context) =>
                 {
                     Console.WriteLine($"Retry {retryCount} after {timespan.TotalSeconds}s due to: {outcome.Exception?.Message ?? outcome.Result.StatusCode.ToString()}");
