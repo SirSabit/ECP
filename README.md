@@ -12,7 +12,7 @@ CREATE TABLE OrderLogs (
 );
 
 ## ENDPOINT CURLS
-Complete pre order endpoint
+* Complete pre order endpoint
 
 curl --location 'https://localhost:44373/api/v1/orders/complete' \
 --header 'Content-Type: application/json' \
@@ -20,7 +20,8 @@ curl --location 'https://localhost:44373/api/v1/orders/complete' \
     "orderId": "03bf609d-c5d0-4f30-a58a-ad2656f49e05"
 }'
 
-Create a pre order endpoint
+* Create a pre order endpoint
+
 curl --location 'https://localhost:44373/api/v1/orders/create' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -28,5 +29,6 @@ curl --location 'https://localhost:44373/api/v1/orders/create' \
     "orderId": ""
 }'
 
-Get products endpoint
+* Get products endpoint
+
 curl --location 'https://localhost:44373/api/v1/products'
