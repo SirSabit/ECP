@@ -11,7 +11,8 @@ namespace Infrastructure.DbContexts.Implementation
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("PostgreCs"));
+            if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseNpgsql(configuration.GetConnectionString("PostgreCs"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,6 +27,6 @@ namespace Infrastructure.DbContexts.Implementation
             modelBuilder.Entity<OrderLogEntity>().Property(p => p.LogDate).HasColumnName("logdate");
 
         }
-        public DbSet<OrderLogEntity> OrderLogs { get; set; }
+        public virtual DbSet<OrderLogEntity> OrderLogs { get; set; }
     }
 }

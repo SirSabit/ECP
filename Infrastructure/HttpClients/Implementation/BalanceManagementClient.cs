@@ -26,7 +26,6 @@ namespace Infrastructure.HttpClients.Implementation
                     throw new Exception("Content deserialization problem!");
 
                 return content;
-
             }
             catch (Exception ex)
             {
